@@ -14,7 +14,7 @@ playwright = async_playwright()
 p = await playwright.__aenter__()
 browser = await p.chromium.launch(channel="chrome", headless=False)
 context = await browser.new_context(viewport={"width": 1440, "height": 1700})
-await context.tracing.start(screenshots=True, snapshots=True, sources=True)
+# await context.tracing.start(screenshots=True, snapshots=True, sources=True)
 page = await context.new_page()
 page.set_default_timeout(8000)
 
@@ -158,7 +158,7 @@ for action, value in history:
 # %%
 # Clean up Playwright context
 await page.close()
-await context.tracing.stop(path="trace.zip")
+# await context.tracing.stop(path="trace.zip")
 await context.close()
 await browser.close()
 await playwright.__aexit__()
